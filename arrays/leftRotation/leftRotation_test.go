@@ -7,7 +7,7 @@ type InputArgs struct {
 	d int32
 }
 
-func TestRotLeft(t *testing.T) {
+func TestLeftRotation(t *testing.T) {
 	cases := []struct {
 		input InputArgs
 		want  []int32
