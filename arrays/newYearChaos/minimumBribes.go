@@ -4,17 +4,24 @@ import (
 	"fmt"
 )
 
-func MinimumBribes(q []int32) {
+func minimumBribes(q []int32) {
 	var bribes int
 	for i, initial := range q {
-		current := i + 1
-		distance := int(initial) - current
+		distance := int(initial) - (i + 1)
 		if distance > 2 {
 			fmt.Println("Too chaotic")
 			return
 		}
-		if distance > 0 {
-			bribes += distance
+		var j int
+		if (q[i] - 2) >= 0 {
+			j = int(q[i] - 2)
+		} else if (q[i] - 1) >= 0 {
+			j = int(q[i] - 1)
+		}
+		for ; j < i; j++ {
+			if q[j] > q[i] {
+				bribes++
+			}
 		}
 	}
 	fmt.Println(bribes)
